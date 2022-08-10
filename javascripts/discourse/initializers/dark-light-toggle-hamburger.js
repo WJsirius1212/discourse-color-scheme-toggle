@@ -128,7 +128,7 @@ Have you selected two different themes for your dark/light schemes in user prefe
     function createToggle(iconName, labelName) {
       let title = I18n.t(themePrefix("toggle_description"));
 
-      let toggle = h("span.scheme-toggle", { title }, [
+      let toggle = h("div.scheme-toggle", { title }, [
         iconNode(iconName, { class: "scheme-icon" }),
         h("span", I18n.t(themePrefix(labelName))),
       ]);
@@ -211,12 +211,12 @@ Have you selected two different themes for your dark/light schemes in user prefe
 
         html() {
           if (activeScheme() === "light") {
-            // return createToggle("far-moon", "toggle_dark_mode");
-            return createToggle("far-moon", "切换夜间模式");
+            return createToggle("far-moon", "toggle_dark_mode");
+            // return createToggle("far-moon", "切换夜间模式");
 
           } else {
-            // return createToggle("sun", "toggle_light_mode");
-            return createToggle("far-moon", "切换午间模式");
+            return createToggle("sun", "toggle_light_mode");
+            // return createToggle("far-moon", "切换午间模式");
 
           }
         },
@@ -264,8 +264,8 @@ Have you selected two different themes for your dark/light schemes in user prefe
             h(
               "p",
               { title: I18n.t(themePrefix("auto_mode_description")) },
-              // I18n.t(themePrefix("toggle_auto_mode"))
-              I18n.t(themePrefix("自适应配色模式"))
+              I18n.t(themePrefix("toggle_auto_mode"))
+              // I18n.t(themePrefix("自适应配色模式"))
 
             ),
           ]);

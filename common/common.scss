@@ -116,3 +116,8 @@ span:focus + .slider {
 .switch.dark span.slider {
   transform: translateX(36px);
 }
+
+// add css
+.user-menu .quick-access-panel .color-scheme-toggle li div svg.fa {
+  display: unset;
+}
