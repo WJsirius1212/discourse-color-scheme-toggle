@@ -266,9 +266,8 @@ Have you selected two different themes for your dark/light schemes in user prefe
         },
       });
 
-      api.decorateWidget("quick-access-profile:aftter", (helper) => {
+      api.decorateWidget("quick-access-profile:after", (helper) => {
         // if (helper.attrs.name === "footer-links") {
-          console.log(helper);
           if (!settings.add_color_scheme_toggle_to_header) {
             return [
               h("ul.color-scheme-toggle", [
