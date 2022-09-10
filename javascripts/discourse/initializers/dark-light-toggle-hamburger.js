@@ -23,7 +23,7 @@ function activeScheme() {
 
   document
     .querySelector("div#festival-banner")
-    .classList.add("banner-" + theme);
+    .classList.add("banner-" + (theme === "light" ? "moon" : "nignt"));
 
   return theme;
 }
