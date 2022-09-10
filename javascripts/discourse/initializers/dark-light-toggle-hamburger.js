@@ -23,7 +23,7 @@ function activeScheme() {
 
   let banner = document.querySelector("div#festival-banner").classList;
   banner.remove("banner-moon");
-  banner.remove("banner-nignt");
+  banner.remove("banner-night");
   banner.add("banner-" + (theme === "light" ? "moon" : "night"));
 
   return theme;
