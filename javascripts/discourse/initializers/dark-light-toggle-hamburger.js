@@ -21,9 +21,10 @@ function activeScheme() {
     theme = "light";
   }
 
-  document
-    .querySelector("div#festival-banner")
-    .classList.add("banner-" + (theme === "light" ? "moon" : "nignt"));
+  let banner = document.querySelector("div#festival-banner").classList;
+  banner.remove("banner-moon");
+  banner.remove("banner-nignt");
+  banner.add("banner-" + (theme === "light" ? "moon" : "nignt"));
 
   return theme;
 }
