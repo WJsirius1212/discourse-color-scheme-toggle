@@ -10,16 +10,22 @@ import Session from "discourse/models/session";
 
 function activeScheme() {
   let savedSchemeChoice = cookie("userSelectedScheme");
-
+  let theme;
   if (savedSchemeChoice === "dark") {
-    return "dark";
+    theme = "dark";
   } else if (savedSchemeChoice === "light") {
-    return "light";
+    theme = "light";
   } else if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark";
+    theme = "dark";
   } else {
-    return "light";
+    theme = "light";
   }
+
+  document
+    .querySelector("div#festival-banner")
+    .classList.add("banner-" + theme);
+
+  return theme;
 }
 
 function updateThemeColor(frames = 0) {
@@ -213,11 +219,9 @@ Have you selected two different themes for your dark/light schemes in user prefe
           if (activeScheme() === "light") {
             return createToggle("far-moon", "toggle_dark_mode");
             // return createToggle("far-moon", "切换夜间模式");
-
           } else {
             return createToggle("sun", "toggle_light_mode");
             // return createToggle("far-moon", "切换午间模式");
-
           }
         },
       });
@@ -266,7 +270,6 @@ Have you selected two different themes for your dark/light schemes in user prefe
               { title: I18n.t(themePrefix("auto_mode_description")) },
               I18n.t(themePrefix("toggle_auto_mode"))
               // I18n.t(themePrefix("自适应配色模式"))
-
             ),
           ]);
         },
@@ -274,16 +277,16 @@ Have you selected two different themes for your dark/light schemes in user prefe
 
       api.decorateWidget("quick-access-profile:after", (helper) => {
         // if (helper.attrs.name === "footer-links") {
-          if (!settings.add_color_scheme_toggle_to_header) {
-            return [
-              h("ul.color-scheme-toggle", [
-                h("li.read", helper.widget.attach("dark-light-selector")),
-                h("li.read", helper.widget.attach("auto-selector")),
-              ]),
-              h("hr"),
-            ];
-          }
-          return "";
+        if (!settings.add_color_scheme_toggle_to_header) {
+          return [
+            h("ul.color-scheme-toggle", [
+              h("li.read", helper.widget.attach("dark-light-selector")),
+              h("li.read", helper.widget.attach("auto-selector")),
+            ]),
+            h("hr"),
+          ];
+        }
+        return "";
         // }
       });
     });
